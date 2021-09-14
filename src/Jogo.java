@@ -17,7 +17,7 @@ public class Jogo extends JFrame{
 	
 	public Jogo() {
 		Componentes();
-		Eventos();
+     	Eventos();
 	}
 	
 	
@@ -75,22 +75,22 @@ public class Jogo extends JFrame{
 	        } catch (Exception e) {
 	            JOptionPane.showMessageDialog(this, e);
 	        }
+	    
         
 	} 
 	    
 	public void Eventos() {
-		jogar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 //Muda de Tela
-				  new Tela1 ().setVisible(true);
-				  setVisible(false);
-				  clip.stop();
-			}
-		});
-	    
+//		//jogar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				 //Muda de Tela
+//				  new Tela1 ().setVisible(true);
+//				  setVisible(false);
+//				  clip.stop();
+//			}
+//		});
+//	    
 	}
-		
-
+	
 
 		
 	
@@ -105,5 +105,6 @@ public static void main(String args[]) {
 	 frame.setVisible(true);
 	
 }
+
 }
 
