@@ -12,12 +12,18 @@ public class Jogo extends JFrame{
 	JLabel lb1,lb2,lb3,lb4;
 	ImageIcon campo,jogador;
 	JButton jogar;
-	
+	Clip clip;
 
 	
 	public Jogo() {
+		Componentes();
+		Eventos();
+	}
+	
+	
+	public void Componentes() {
 		setLayout(null);
-		
+		new Tela1 ().setVisible(false);
 		
 		
 		//Titulo
@@ -31,6 +37,7 @@ public class Jogo extends JFrame{
         lb2.setFont( new Font("Lucida Bright Demibold", Font.BOLD, 35) );
         lb2.setForeground(Color.RED);
 		add(lb2);
+	
 		
 		
 		 
@@ -62,24 +69,31 @@ public class Jogo extends JFrame{
 	    	  File soundFile = new File("som.wav");
 	           AudioInputStream sound = AudioSystem.getAudioInputStream(soundFile);
 	           DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-	           Clip clip = (Clip) AudioSystem.getLine(info);
+	           clip = (Clip) AudioSystem.getLine(info);
 	           clip.open(sound);
 	           clip.start();
 	        } catch (Exception e) {
 	            JOptionPane.showMessageDialog(this, e);
 	        }
         
-        
+	} 
 	    
+	public void Eventos() {
+		jogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 //Muda de Tela
+				  new Tela1 ().setVisible(true);
+				  setVisible(false);
+				  clip.stop();
+			}
+		});
 	    
-	    
-	   
+	}
 		
-	 //Muda de Tela
-	  // new Tela ().setVisible(true);
+
 
 		
-	}
+	
 
 
 
