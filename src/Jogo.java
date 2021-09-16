@@ -23,7 +23,7 @@ public class Jogo extends JFrame{
 	
 	public void Componentes() {
 		setLayout(null);
-		new Tela1 ().setVisible(false);
+		
 		
 		
 		//Titulo
@@ -66,29 +66,32 @@ public class Jogo extends JFrame{
 		
 	    //Tocar Música 
 	    try {
-	    	  File soundFile = new File("som.wav");
+	    	  File soundFile = new File("intro.wav");
 	           AudioInputStream sound = AudioSystem.getAudioInputStream(soundFile);
 	           DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
 	           clip = (Clip) AudioSystem.getLine(info);
 	           clip.open(sound);
 	           clip.start();
+	           
 	        } catch (Exception e) {
 	            JOptionPane.showMessageDialog(this, e);
 	        }
-	    
-        
+ 
+       
 	} 
+	   
+	public void Eventos() {	
+		jogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 //Muda de Tela
+				  new TelaC().setVisible(true);				
+				  setVisible(false);
+				  clip.stop();
+			
+				
+			}
+		});
 	    
-	public void Eventos() {
-//		//jogar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				 //Muda de Tela
-//				  new Tela1 ().setVisible(true);
-//				  setVisible(false);
-//				  clip.stop();
-//			}
-//		});
-//	    
 	}
 	
 
@@ -107,4 +110,5 @@ public static void main(String args[]) {
 }
 
 }
+
 
